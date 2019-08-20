@@ -13,17 +13,16 @@ import java.util.function.Consumer;
 @AllArgsConstructor
 @NoArgsConstructor
 public class InputData implements Serializable {
-//{ "key":"test-key", "value":"val"}
+//{"key":"test-key", "value":"val" , "timeStamp":"1566313128308"}
 
-    private  String key;
-    private  String value;
+    private String key;
+    private String value;
     private Long timeStamp;
 
 
-
     public static class InputDataBuilder {
-        private  String key;
-        private  String value;
+        private String key;
+        private String value;
         private Long timeStamp;
 
         InputDataBuilder with(Consumer<InputDataBuilder> builderFunction) {
@@ -37,14 +36,13 @@ public class InputData implements Serializable {
         }
     }
 
-    public static void main(String[] args) {
-        InputData data = new InputDataBuilder()
+  /*
+   InputData data = new InputDataBuilder()
                 .with(dataBuilder -> {
                     dataBuilder.key = "Mr.";
                     dataBuilder.value = "John";
                     dataBuilder.timeStamp = System.currentTimeMillis();
                 })
                 .createPerson();
-        System.out.println(data);
-    }
+   */
 }

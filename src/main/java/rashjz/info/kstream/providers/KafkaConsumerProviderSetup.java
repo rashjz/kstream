@@ -8,8 +8,8 @@ import rashjz.info.kstream.runner.AppStreamRunner;
 @Slf4j
 @Component
 public class KafkaConsumerProviderSetup {
-    private static final String BOOTSTRAP_SERVERS = "localhost:9092";
-    private static final String INPUT_TOPIC = "inputTopic";
+    private static final String BOOTSTRAP_SERVERS = "kafka:9092";
+    private static final String INPUT_TOPIC = "topic-test:1:1";
 
     private final AppStreamRunner listener;
 
