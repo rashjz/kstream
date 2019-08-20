@@ -16,7 +16,7 @@ import static org.apache.kafka.streams.StreamsConfig.*;
 @RequiredArgsConstructor
 public class KafkaPropertiesProvider {
     private static final String APP_ENGINE_STREAM_NAME = "app-engine-stream";
-    private static final String APP_ENGINE_CONSUMER_NAME = "app-engine-reader";
+    private static final String APP_ENGINE_CONSUMER_NAME = "app-engine-stream";
     private static final String POLLING_STRATEGY = "earliest";
 
     public Properties get(final String bootstrapServers) {

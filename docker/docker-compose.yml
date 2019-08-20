@@ -11,17 +11,19 @@ services:
     links:
       - zookeeper
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
       KAFKA_DELETE_TOPIC_ENABLE: 'true'
-      KAFKA_CREATE_TOPICS: "topic-test:1:1"
+      KAFKA_CREATE_TOPICS: "topic-test-str"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   kstream:
-    image: rashjz/kstream
-    environment:
-      JAR_FILE: target/kstream-0.0.1-SNAPSHOT.jar
+    build:
+      context: kstream
+      dockerfile: Dockerfile
+#    environment:
+#      JAR_FILE: target/kstream-0.0.1-SNAPSHOT.jar
     depends_on:
       - kafka
     ports:
@@ -29,6 +31,7 @@ services:
     container_name: kstream
     links:
       - kafka
+      - zookeeper
   grafana:
     image: grafana/grafana:latest
     container_name: grafana

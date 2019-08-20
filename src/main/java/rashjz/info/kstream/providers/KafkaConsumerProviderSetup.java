@@ -9,7 +9,7 @@ import rashjz.info.kstream.runner.AppStreamRunner;
 @Component
 public class KafkaConsumerProviderSetup {
     private static final String BOOTSTRAP_SERVERS = "kafka:9092";
-    private static final String INPUT_TOPIC = "topic-test:1:1";
+    private static final String INPUT_TOPIC = "topic-test-str";
 
     private final AppStreamRunner listener;
 
