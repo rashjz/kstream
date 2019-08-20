@@ -19,14 +19,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   kstream:
-    image: rashjz/kstream
-    #    build:
-#      context: kstream
-#      dockerfile: ../Dockerfile
+    image: rashjz/kstream:latest
     depends_on:
       - kafka
-    ports:
-      - "8080:8080"
     container_name: kstream
     links:
       - kafka
