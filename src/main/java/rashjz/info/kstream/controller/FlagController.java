@@ -15,7 +15,12 @@ public class FlagController {
 
     @GetMapping("/{topic}/{bootstrapServers}")
     public void startTopic(@PathVariable String topic, @PathVariable String bootstrapServers) {
-        log.info("topic  bootstrapServers {} {} {}",topic,bootstrapServers, appStreamRunner);
+        log.info("topic  bootstrapServers {} {} {}", topic, bootstrapServers, appStreamRunner);
         appStreamRunner.register(topic, bootstrapServers);
+    }
+
+    @GetMapping("/info")
+    public String info() {
+        return "app is running";
     }
 }

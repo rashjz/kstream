@@ -1,0 +1,56 @@
+version: '3'
+services:
+  zookeeper:
+    image: deployable/kafka:latest
+    command: zookeeper
+    ports:
+      - "2181:2181"
+    healthcheck:
+      test: [ "CMD", "/kafka/check.sh", "zookeeper" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  kafka:
+    image: deployable/kafka:latest
+    command: kafka
+    environment:
+      ADVERTISE_LISTENERS: 'localhost:9092'
+    ports:
+      - "9092:909F2"
+    depends_on:
+      - zookeeper
+    healthcheck:
+      test: ["CMD", "/kafka/check.sh", "kafka" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  kafka-setup:
+    image: deployable/kafka:latest
+    command: setup
+    depends_on:
+      - kafka
+    environment:
+      KAFKA_TOPIC: inputTopic
+      KAFKA_BROKER_ID : app-engine-stream
+  kstream:
+    image: rashjz/kstream
+    environment:
+      JAR_FILE : target/kstream-0.0.1-SNAPSHOT.jar
+    depends_on:
+      - kafka-setup
+    ports:
+      - "8080:8080"
+    container_name: kstream
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    env_file:
+      - 'env.grafana'
+    links:
+      - kstream
+#    volumes:
+      # Data persistency
+      # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
+#      - /srv/docker/grafana/data:/var/lib/grafana
