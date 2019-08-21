@@ -5,7 +5,7 @@
 Docker Compose images list :
  1) kafka 
  2) zookeeper  
- 3) kstream - kafka stream application 
+ 3) [kstream](https://hub.docker.com/r/rashjz/kstream)
  4) grafana 
  
 Testing:  bin/record-produces.sh to send json to topic
