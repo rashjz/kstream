@@ -20,9 +20,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
   kstream:
     image: rashjz/kstream:latest
+    volumes:
+      - /tmp
     depends_on:
       - kafka
     container_name: kstream
+    build: .
     links:
       - kafka
       - zookeeper
