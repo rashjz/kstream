@@ -1,6 +1,7 @@
 FROM openjdk:8-jdk-alpine
 LABEL MAINTAINER="Rashad Javadov <rashadjavad@gmail.com>"
 VOLUME /tmp
+WORKDIR /tmp
 EXPOSE 8080
 ADD build-jar.sh /tmp/build-jar.sh
 RUN /tmp/build-jar.sh
