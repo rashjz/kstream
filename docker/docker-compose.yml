@@ -31,7 +31,6 @@ services:
 
     links:
       - kafka
-      - zookeeper
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
