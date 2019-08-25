@@ -28,7 +28,6 @@ services:
     depends_on:
       - kafka
     container_name: kstream
-
     links:
       - kafka
   grafana:
