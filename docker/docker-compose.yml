@@ -1,4 +1,5 @@
-version: '3.1'
+version: '3'
+
 services:
   zookeeper:
     image: wurstmeister/zookeeper:latest
@@ -42,4 +43,4 @@ services:
       #    volumes:
       # Data persistency
       # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
-#      - /srv/docker/grafana/data:/var/lib/grafana
+      # - /srv/docker/grafana/data:/var/lib/grafana
